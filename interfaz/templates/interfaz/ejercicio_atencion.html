@@ -1,0 +1,36 @@
+{% extends "interfaz/base.html" %}
+{% load static %}
+{% block title %}Ejercicio de Atención{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h2>Ejercicio de Atención</h2>
+    <p>Haz clic sobre el ícono diferente.</p>
+
+    <div class="d-flex flex-wrap justify-content-center mt-4" id="grid">
+        {% for i in numeros %}
+            <div class="m-2">
+                {% if i == 7 %}
+                    <img src="{% static 'interfaz/img/icono_distinto.png' %}" class="icono" data-diferente="1" width="80">
+                {% else %}
+                    <img src="{% static 'interfaz/img/icono_igual.png' %}" class="icono" data-diferente="0" width="80">
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <p id="mensaje" class="mt-4 fw-bold"></p>
+<script>
+    document.querySelectorAll(".icono").forEach(img => {
+        img.addEventListener("click", function() {
+            if (this.dataset.diferente === "1") {
+                document.getElementById("mensaje").textContent = "¡Correcto!";
+                this.style.border = "3px solid green";
+            } else {
+                document.getElementById("mensaje").textContent = "Intenta de nuevo.";
+                this.style.border = "3px solid red";
+            }
+        });
+    });
+</script>
+{% endblock %}

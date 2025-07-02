@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroTEA - Rehabilitación Cognitiva</title>
+    
+    <!-- Fuente accesible -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="{% static 'interfaz/css/estilos.css' %}">
+
+    <!-- Íconos amigables (Lucide o Heroicons) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Lexend Deca', sans-serif;
+            background-color: #F5F9FC;
+            color: #333;
+        }
+        header {
+            background-color: #B3D7E6;
+            padding: 1rem;
+            text-align: center;
+            color: #003C5F;
+        }
+        main {
+            padding: 2rem;
+        }
+        footer {
+            background-color: #E6EEF5;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🧠 NeuroTEA</h1>
+        <p>Plataforma de estimulación cognitiva para personas con TEA</p>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Aquí se inserta el contenido de cada página -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        &copy; 2025 NeuroTEA | Proyecto de Innovación en Rehabilitación Cognitiva
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

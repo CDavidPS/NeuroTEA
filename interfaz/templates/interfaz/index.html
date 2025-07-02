@@ -1,0 +1,39 @@
+{% extends 'interfaz/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="contenedor">
+
+    <div class="tarjeta">
+        <h2>Bienvenido a <strong>NeuroTEA</strong></h2>
+        <p>Selecciona una opción para comenzar:</p>
+    </div>
+
+    <!-- Menú de opciones con íconos amigables -->
+    <div class="contenedor" style="gap: 1rem; margin-top: 2rem;">
+
+        <a href="{% url 'login' %}" class="tarjeta boton">
+            <i data-lucide="user-circle" class="icono-grande"></i><br>
+            Iniciar sesión / Registro
+        </a>
+
+        <a href="#" class="tarjeta boton">
+            <i data-lucide="puzzle" class="icono-grande"></i><br>
+            Iniciar ejercicio cognitivo
+        </a>
+
+        <a href="#" class="tarjeta boton">
+            <i data-lucide="bar-chart-3" class="icono-grande"></i><br>
+            Ver progreso
+        </a>
+
+        <a href="#" class="tarjeta boton">
+            <i data-lucide="settings" class="icono-grande"></i><br>
+            Configuración / Perfil
+        </a>
+
+    </div>
+
+</div>
+{% endblock %}
+

@@ -1,0 +1,38 @@
+{% extends "interfaz/base.html" %}
+{% load static %}
+{% block title %}Ejercicio de Secuencias{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h2>Ejercicio de Secuencias</h2>
+    <p>Selecciona la imagen que continúa la secuencia:</p>
+
+    <div class="d-flex justify-content-center mt-4">
+        <img src="{% static 'interfaz/img/sec1.png' %}" width="60">
+        <img src="{% static 'interfaz/img/sec2.png' %}" width="60">
+        <img src="{% static 'interfaz/img/sec3.png' %}" width="60">
+        <img src="{% static 'interfaz/img/interrogacion.png' %}" width="60">
+    </div>
+
+    <div class="mt-4">
+        <button class="btn btn-outline-primary opcion" data-correcta="0">Opción A</button>
+        <button class="btn btn-outline-primary opcion" data-correcta="1">Opción B</button>
+        <button class="btn btn-outline-primary opcion" data-correcta="0">Opción C</button>
+    </div>
+
+    <p id="feedback" class="mt-4 fw-bold"></p>
+
+<script>
+    document.querySelectorAll(".opcion").forEach(btn => {
+        btn.addEventListener("click", () => {
+            if (btn.dataset.correcta === "1") {
+                btn.classList.replace("btn-outline-primary", "btn-success");
+                document.getElementById("feedback").textContent = "¡Bien hecho!";
+            } else {
+                btn.classList.replace("btn-outline-primary", "btn-danger");
+                document.getElementById("feedback").textContent = "Respuesta incorrecta.";
+            }
+        });
+    });
+</script>
+{% endblock %}

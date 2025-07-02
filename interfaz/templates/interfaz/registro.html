@@ -1,0 +1,37 @@
+{% extends 'interfaz/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="contenedor">
+    <div class="tarjeta">
+        <h2><i data-lucide="user-plus" class="icono-grande"></i><br>Registro de Usuario</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div style="margin-bottom: 1rem;">
+                <label for="username">Nombre de usuario:</label><br>
+                <input type="text" name="username" id="username" required
+                       style="padding: 0.7rem; width: 100%; border-radius: 1rem; border: 1px solid #ccc;">
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+                <label for="password1">Contraseña:</label><br>
+                <input type="password" name="password1" id="password1" required
+                       style="padding: 0.7rem; width: 100%; border-radius: 1rem; border: 1px solid #ccc;">
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+                <label for="password2">Confirmar contraseña:</label><br>
+                <input type="password" name="password2" id="password2" required
+                       style="padding: 0.7rem; width: 100%; border-radius: 1rem; border: 1px solid #ccc;">
+            </div>
+
+            <button type="submit" class="boton" style="width: 100%;">Registrarse</button>
+        </form>
+
+        <p style="margin-top: 1rem;">¿Ya tienes una cuenta?  
+            <a href="{% url 'login' %}">Inicia sesión aquí</a>.
+        </p>
+    </div>
+</div>
+{% endblock %}

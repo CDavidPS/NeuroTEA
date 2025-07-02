@@ -1,0 +1,50 @@
+{% extends "interfaz/base.html" %}
+{% load static %}
+{% block title %}Ejercicio de Asociaciones{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h2>Ejercicio de Asociaciones</h2>
+    <p>Selecciona la palabra correcta para cada imagen.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <img src="{% static 'interfaz/img/zapato.png' %}" data-correcta="Zapato" class="asoc" width="100">
+            <img src="{% static 'interfaz/img/sol.png' %}" data-correcta="Sol" class="asoc" width="100">
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-outline-primary m-2">Sol</button>
+            <button class="btn btn-outline-primary m-2">Zapato</button>
+            <button class="btn btn-outline-primary m-2">Luna</button>
+        </div>
+    </div>
+
+    <p id="resultado" class="mt-4 fw-bold"></p>
+
+<script>
+    let seleccion = null;
+    document.querySelectorAll(".asoc").forEach(img => {
+        img.addEventListener("click", () => {
+            seleccion = img.dataset.correcta;
+            document.getElementById("resultado").textContent = `Has seleccionado: ${seleccion}`;
+        });
+    });
+
+    document.querySelectorAll("button.btn-outline-primary").forEach(btn => {
+        btn.addEventListener("click", () => {
+            if (!seleccion) {
+                alert("Primero selecciona una imagen.");
+                return;
+            }
+            if (btn.textContent === seleccion) {
+                document.getElementById("resultado").textContent = "¡Correcto!";
+                btn.classList.remove("btn-outline-primary");
+                btn.classList.add("btn-success");
+            } else {
+                document.getElementById("resultado").textContent = "Respuesta incorrecta.";
+                btn.classList.add("btn-danger");
+            }
+        });
+    });
+</script>
+{% endblock %}

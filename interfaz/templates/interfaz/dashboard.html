@@ -1,0 +1,37 @@
+{% extends 'interfaz/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="contenedor">
+
+    <div class="tarjeta">
+        <h2><i data-lucide="layout-dashboard" class="icono-grande"></i><br>Panel de Ejercicios Cognitivos</h2>
+        <p>Selecciona un ejercicio para comenzar:</p>
+    </div>
+
+    <div class="contenedor" style="gap: 1rem; margin-top: 2rem;">
+
+        <a href="{% url 'ejercicio_memoria' %}" class="tarjeta boton">
+            <i data-lucide="brain-circuit" class="icono-grande"></i><br>
+            Memoria visual
+        </a>
+
+        <a href="{% url 'ejercicio_atencion' %}" class="tarjeta boton">
+            <i data-lucide="target" class="icono-grande"></i><br>
+            Atención selectiva
+        </a>
+
+        <a href="{% url 'ejercicio_asociaciones' %}" class="tarjeta boton">
+            <i data-lucide="layers" class="icono-grande"></i><br>
+            Asociación de conceptos
+        </a>
+
+        <a href="{% url 'ejercicio_secuencias' %}" class="tarjeta boton">
+            <i data-lucide="shuffle" class="icono-grande"></i><br>
+            Orden de secuencias
+        </a>
+
+    </div>
+
+</div>
+{% endblock %}

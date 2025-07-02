@@ -1,0 +1,22 @@
+{% extends "interfaz/base.html" %}
+{% block title %}Panel del Cuidador{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2>Bienvenido, {{ user.username }}</h2>
+  <p>Este es tu panel como <strong>cuidador</strong>.</p>
+
+  <div class="card">
+    <h3>Funciones disponibles:</h3>
+    <ul>
+      <li>Ver rutina diaria del usuario asignado</li>
+      <li>Registrar observaciones</li>
+      <li>Consultar progreso general</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <a href="{% url 'logout' %}" class="btn btn-danger">Cerrar sesión</a>
+  </div>
+</div>
+{% endblock %}

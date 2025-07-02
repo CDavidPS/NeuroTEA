@@ -1,0 +1,42 @@
+{% extends 'interfaz/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="contenedor">
+
+    <div class="tarjeta">
+        <h2><i data-lucide="brain-cog" class="icono-grande"></i><br>Ejercicio: Memoria Visual</h2>
+        <p>Observa las figuras por unos segundos y luego intenta recordarlas.</p>
+    </div>
+
+    <div class="tarjeta" id="fase-memoria">
+        <p><strong>Recuerda estas imágenes:</strong></p>
+        <div class="contenedor" style="flex-direction: row; gap: 1rem;">
+            <img src="{% static 'interfaz/img/estrella.png' %}" alt="estrella" width="80">
+            <img src="{% static 'interfaz/img/circulo.png' %}" alt="circulo" width="80">
+            <img src="{% static 'interfaz/img/cuadro.png' %}" alt="cuadro" width="80">
+        </div>
+    </div>
+
+    <div class="tarjeta" id="fase-respuesta" style="display: none;">
+        <p><strong>¿Cuál de estas imágenes viste antes?</strong></p>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="contenedor" style="flex-direction: row; gap: 1rem;">
+                <button type="submit" name="respuesta" value="estrella" class="boton">⭐</button>
+                <button type="submit" name="respuesta" value="triangulo" class="boton">🔺</button>
+                <button type="submit" name="respuesta" value="cuadro" class="boton">🟥</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    // Mostrar las imágenes por 4 segundos, luego pasar a las respuestas
+    setTimeout(() => {
+        document.getElementById('fase-memoria').style.display = 'none';
+        document.getElementById('fase-respuesta').style.display = 'block';
+    }, 4000);
+</script>
+{% endblock %}
